@@ -231,7 +231,7 @@ async def updateSensors():
                         )
                         print("Pressure: " + str(Pressure))
 
-                     elif sensor.sensorType == "Light":
+                    elif sensor.sensorType == "Light":
                         UVIndex = pascoSensors[sensor.sensorID].read_data("UVIndex")
                         await prisma.measurement.create(
                             data={
