@@ -36,7 +36,9 @@ enum MeasurementType {
     pressure
     UVIndex
     Illuminance
+    SolarIrradience
     SolarPAR
+    White
 }
 
 model Sensor {

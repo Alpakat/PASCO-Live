@@ -261,6 +261,26 @@ async def updateSensors():
                             }
                         )
                         print("SolarPAR: " + str(SolarPAR))
+
+                        White = pascoSensors[sensor.sensorID].read_data("White")
+                        await prisma.measurement.create(
+                            data={
+                                "sensorId": sensor.id,
+                                "value": White,
+                                "type": "White"
+                            }
+                        )
+                        print("White: " + str(White))
+
+                        SolarIrradience = pascoSensors[sensor.sensorID].read_data("SolarIrradience")
+                        await prisma.measurement.create(
+                            data={
+                                "sensorId": sensor.id,
+                                "value": SolarIrradience,
+                                "type": "SolarIrradience"
+                            }
+                        )
+                        print("SolarIrradience: " + str(SolarIrradience))
                     
             except Exception as e:
                 print(e)
