@@ -148,6 +148,9 @@ export const sensorRouter = createTRPCRouter({
 		}),
 
 	delete: publicProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx, input }) => {
+
+		await ctx.db.measurement.deleteMany({ where: { sensorId: input.id } })
+
 		await ctx.db.sensor.delete({ where: { id: input.id } })
 
 		return true
